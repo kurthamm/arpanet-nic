@@ -87,6 +87,10 @@ this — it is inherent to the network and works exactly as it did in 1972:
 
 Listed for completeness only; these are not platform features.
 
+> **Scoped exception:** the open **Exhibit web terminal** *is* the site reaching into hosts — but only
+> through **one Exhibit TIP node**, only to **Exhibit hosts**, for anonymous visitors. The member side
+> stays purely host-to-host. See [exhibit-and-platform.md](exhibit-and-platform.md).
+
 ## D. Change / lifecycle — *(site: NIC)*
 10. **Troubleshoot** — my node is down or won't connect. **Push-button "Diagnose my connection":**
     because the tunnel, trunk line, and IMP routing all terminate on our side, we read our own view
@@ -131,9 +135,16 @@ Listed for completeness only; these are not platform features.
 
 ---
 
-## Parked (not launch journeys)
-- **Visitor with no hardware / public TIP.** To use the network you need a host — the site is not a
-  way in. Revisit later if we ever want a hardware-less on-ramp.
+## The Exhibit visitor (open, no login) — a real journey
+- **Experience the ARPANET with no hardware** — via the open **web terminal (one Exhibit TIP node)**,
+  `@L` freely among the **Exhibit hosts only** (a contained public sandbox; it cannot reach the member
+  network). No account.
+- The public may also **read about the living network and see the anonymized live map**, but cannot
+  *interact* with it without joining. See [exhibit-and-platform.md](exhibit-and-platform.md).
+
+## Future ideas (deferred, not now)
+- Member account option to **add their own node to the Exhibit group** so the public can reach it —
+  technically involved; parked.
 
 ## Decisions (resolved)
 - **Accounts** — required, via **GitHub OAuth**; public layer = project info + anonymized city/state
@@ -147,6 +158,12 @@ Listed for completeness only; these are not platform features.
 - **Sub-hub** — operator opts in + capacity; NIC assigns; traffic-crosses-others disclosed in charter.
 - **Abuse** — warn → throttle → revoke, with appeal to the operator (F.26).
 - **Backbone growth** — add a hub on distance/saturation; retire on empty (F.27).
+- **Exhibit vs Platform** — one site, two front doors: **Exhibit** (open, no login, 1972 map + web
+  terminal into designated hosts, a contained sandbox) and **Platform** (account, live map,
+  join/add). Access is asymmetric: anonymous → **Exhibit-only**; member → **all members + Exhibit**;
+  member↔member **open**. The Exhibit is operator-curated/changeable (operator can move nodes between
+  Exhibit and member net); **one Exhibit TIP node**. See
+  [exhibit-and-platform.md](exhibit-and-platform.md).
 
 ## Still open (implementation-phase)
 - Exact **abuse thresholds** (what counts as flooding / bad routing) (F.26).

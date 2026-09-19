@@ -81,6 +81,12 @@ IMP.** Registration is not paperwork; it is the **access grant**:
 - So an **unregistered host is confined to its own local IMP** — it cannot reach any other host on
   the network. **Register → access; revoke/deregister → access removed**, instantly.
 
+**The Exhibit is a scoped containment zone** on top of this: the open **Exhibit TIP** (anonymous, no
+login) is filtered to reach **only Exhibit hosts**, and Exhibit hosts don't originate traffic into the
+member net — so an anonymous visitor can never jump through the Exhibit into members' machines. Members
+reach *into* the Exhibit; anonymous sessions cannot reach *out*. See
+[exhibit-and-platform.md](exhibit-and-platform.md).
+
 This holds for *every* connection combination (see the connect axes in
 [user-journeys.md](user-journeys.md)), so unlimited mixing stays fully under central control. We
 cannot *prevent* a member adding a host to their own IMP (their box), but we **see it** (an unknown
