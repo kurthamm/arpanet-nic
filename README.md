@@ -57,6 +57,21 @@ See [`docs/charter.md`](docs/charter.md) for the full statement.
 | [telecom.md](docs/telecom.md) | Period line grades (50 kbps &c.), latency, the satellite link |
 | [references.md](docs/references.md) | Primary sources for every historical and technical claim |
 
+## Roadmap (implementation milestones)
+
+Tracked as GitHub issues (dependency-ordered):
+
+1. [M1 — Backbone consolidation](../../issues/1) (existing lab becomes the backbone)
+2. [M2 — WireGuard transport + hub endpoints + relay fallback](../../issues/2)
+3. [M3 — NIC registry + accounts (GitHub OAuth) + auto-provisioning](../../issues/3)
+4. [M4 — Connector / bootstrap packaging](../../issues/4)
+5. [M5 — Backbone access control (registration gates the net)](../../issues/5)
+6. [M6 — Line grades / period telecom](../../issues/6)
+7. [M7 — NCC + push-button diagnostics](../../issues/7)
+8. [M8 — The Exhibit (open web terminal + TIP node)](../../issues/8)
+9. [M9 — Platform website (two front doors)](../../issues/9)
+10. [M10 — Lifecycle & operator tooling](../../issues/10)
+
 ## Related projects (kept separate on purpose)
 
 - **kurthamm/arpanet** — Kurt's own lab reconstruction. Becomes the *first member* on this network,
