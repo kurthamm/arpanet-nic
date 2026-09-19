@@ -20,6 +20,12 @@ knowledge are welcome.
   (originally by Lars Brinkhoff). <https://github.com/HackerSmacker/ncp>
 - **The ARPANET IMP Program: Retrospective and Resurrection** (Walden et al.) —
   <https://walden-family.com/bbn/imp-code.pdf>
+- **RFC 647 — "A Proposed Protocol for Connecting Host Computers to ARPA-like Networks via Front End
+  Processors"** (M. Padlipsky, 1974). Describes the front-end (FEP) model in the **singular** — a
+  front-end fronts *a* host; its `HOST` field identifies the *remote* host to talk to, not multiple
+  local hosts. Confirmed against the `ncp-telnet`/`fep-line` implementation: one FEP = one host
+  number, many concurrent users. Multiple host numbers behind one FEP needs 1822L logical addressing
+  (new leader). <https://www.rfc-editor.org/rfc/rfc647.html>
 
 ## Historical facts (pinned to primary sources)
 

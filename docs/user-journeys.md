@@ -53,6 +53,13 @@ per-host variants (all valid, all mixable within one account):
 > feeds (our FEP → our hub; your FEP → your IMP or our hub over the tunnel): that's about where the
 > box lives, not a limit on what you can run.
 
+> **FEP cardinality (verified against RFC 647 *and* the `ncp-telnet`/`fep-line` code):** a FEP fronts
+> **one host number**, and that one host serves **many concurrent users** (terminal lines, capped by
+> `--max-simh-line`). One host per FEP is the real model, not an arbitrary limit — and it doesn't cap
+> users. Putting *multiple host numbers* behind one FEP requires **1822L logical addressing**, which
+> is a new-leader feature outside the frozen period (deferred). So FEP-as-a-service = one FEP instance
+> per hosted host number.
+
 ### Onboarding lens (website only, not a constraint)
 A friendly "how much do you want to run?" framing over the axes above:
 *just a host* (we provide the IMP + FEP as needed) · *host + your own FEP* · *your own IMP* (and you
