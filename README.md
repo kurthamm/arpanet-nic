@@ -44,6 +44,7 @@ See [`docs/charter.md`](docs/charter.md) for the full statement.
 
 | Doc | What it covers |
 |---|---|
+| [user-journeys.md](docs/user-journeys.md) | Master list of every journey — site = connect + observe; use is host-to-host |
 | [charter.md](docs/charter.md) | The frozen period, the values, what's in scope |
 | [architecture.md](docs/architecture.md) | The BBN + NIC roles, the living-network model, the address ceiling |
 | [network-topology.md](docs/network-topology.md) | The seed backbone, trunk spine, numbering, geographic continuity |
