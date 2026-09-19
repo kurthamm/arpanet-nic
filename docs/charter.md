@@ -72,3 +72,19 @@ skipping the IMP network. It looks like it works and defeats the entire purpose.
 Kept deliberately separate from any single contributor's lab, and not a rebrand of anyone else's
 replica project. The engineering idea we take from the wider community is the right one: **route real
 sessions through real IMPs.** The implementation and coordination here stand on their own.
+
+## 6. Member policies (governance)
+
+- **Registration gates access.** Every host must be registered with the NIC, **wherever it sits —
+  including behind a member's own IMP.** Inter-node traffic routes through the backbone, which passes
+  only registered `(IMP, host)` pairs; an unregistered host is confined to its own local IMP.
+  Registration is the access grant; revocation removes it. See `transport-and-security.md`.
+- **Hostnames:** the member proposes; the NIC approves for uniqueness and period style (UPPERCASE
+  `SITE-MACHINE`). Duplicates and anachronisms are rejected.
+- **Number lifecycle** (numbers are scarce — ~63 IMPs / ~250 hosts): a silent node keeps its number
+  for a **90-day grace period**, after which it is reclaimed to the pool. **Deregistering frees a
+  number immediately.** **Transfer** of a node/number to another person is allowed **with operator
+  approval.**
+- **Trust disclosure:** your traffic may cross other members' IMPs — exactly as it did on the real
+  ARPANET in 1972. We state this plainly rather than implying end-to-end privacy the period never had.
+  (The transport wire is encrypted; the *routing* still traverses other operators' IMPs.)

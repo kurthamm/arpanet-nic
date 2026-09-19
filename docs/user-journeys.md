@@ -22,8 +22,10 @@ So the journeys split into: things the **site** mediates (A, B, D, E, F below) a
 1. **Discover & decide** — learn what the network is, confirm my machine qualifies, pick a tier.
 2. **Register** — create my member identity/account (the *person*, separate from any node key).
    *(Open: do we require accounts, and how is the person authenticated vs. the node's key?)*
-3. **Request a connection** — submit what I run + location + line grade; receive my assignment
-   (number, hub, trunk peers) and config bundle.
+3. **Request a connection** — submit what I run + location + line grade + a **proposed hostname**;
+   receive my assignment (number, hub, trunk peers) and config bundle. **Hostnames:** the member
+   proposes, the **NIC approves** for uniqueness + period style (UPPERCASE `SITE-MACHINE`, e.g.
+   `COLUMBIA-ITS`) — duplicates and anachronisms rejected.
    *(Open: provisioning is automatic vs. operator-approved — see F.29.)*
 
 ## B. Connect — *(site: NIC + backbone)*
@@ -45,8 +47,10 @@ per-host variants (all valid, all mixable within one account):
 7. **Non-NCP host → my own FEP → our hub IMP.**
 8. **Non-NCP host → my own FEP → my own IMP.**
 9. **Host other members on my IMP** — spare host ports carry other members' hosts (I become a
-   sub-hub). Those guest hosts are registered under *their* accounts; the NIC still does the
-   assignment.
+   sub-hub). The IMP operator **opts in** and sets a host-port capacity; the **NIC still does the
+   assignment** (numbering stays central); guest hosts are registered under *their* accounts. The
+   [charter](charter.md) states plainly that a member's traffic may cross other members' IMPs — as it
+   did in 1972 — so the trust model is honest, not hidden.
 
 > Example mix (one account): my local IMP carrying my NCP hosts, **plus** one non-NCP host on our
 > managed FEP. Both at once. — A FEP plugs into an IMP's host port, so a FEP sits with the IMP it
@@ -96,10 +100,13 @@ Listed for completeness only; these are not platform features.
 14. **Add another host** — grow into a multi-host site.
 15. **Change tier** — e.g., start Tier 1, later stand up my own IMP.
 16. **Rotate / replace a lost key.**
-17. **Go temporarily offline** — vacation; keep my number during a grace period.
+17. **Go temporarily offline** — vacation; keep my number during a **90-day grace period** of no
+    contact, after which a silent node's number is reclaimed to the pool.
 18. **Report another node** — flag abuse or a broken peer.
-19. **Transfer ownership** — hand my node/number to another person *(edge case)*.
-20. **Deregister** — leave for good; free my IMP/host number, drop from the host table and map.
+19. **Transfer ownership** — hand my node/number to another person, **allowed with operator
+    approval**.
+20. **Deregister** — leave for good; **immediately** frees my IMP/host number back to the pool and
+    drops me from the host table and map.
 
 ## E. Observe — *(site: NCC)*
 21. **View network status** — the NCC map: who's up, link health. Same data feeds the per-member
