@@ -48,6 +48,7 @@ See [`docs/charter.md`](docs/charter.md) for the full statement.
 | [architecture.md](docs/architecture.md) | The BBN + NIC roles, the living-network model, the address ceiling |
 | [network-topology.md](docs/network-topology.md) | The seed backbone, trunk spine, numbering, geographic continuity |
 | [joining.md](docs/joining.md) | The two ways to join, the request flow, what we collect |
+| [request-flow-and-config.md](docs/request-flow-and-config.md) | End-to-end: request → assignment → generated `wg0.conf` + `attach -u` bundle → bring-up |
 | [transport-and-security.md](docs/transport-and-security.md) | How IMPs actually connect (verified), WireGuard packaging, security |
 | [telecom.md](docs/telecom.md) | Period line grades (50 kbps &c.), latency, the satellite link |
 | [references.md](docs/references.md) | Primary sources for every historical and technical claim |

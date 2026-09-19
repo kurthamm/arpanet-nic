@@ -21,25 +21,37 @@ knowledge are welcome.
 - **The ARPANET IMP Program: Retrospective and Resurrection** (Walden et al.) —
   <https://walden-family.com/bbn/imp-code.pdf>
 
-## Historical facts to keep sourced (to be pinned to primary docs)
+## Historical facts (pinned to primary sources)
 
-The following are used across the design and should each be tied to a primary source as the docs
-mature. Stated here so nothing rests on memory alone:
+Verified against primary documents so nothing rests on memory. Items still marked `[pin: …]` are not
+yet tied to a primary source and should be treated as provisional.
 
-- **NCP era:** ~1971 (NCP deployed) to **Jan 1, 1983** (TCP/IP flag day). *[pin: BBN/ARPA histories,
-  RFC 801 "NCP/TCP Transition Plan".]*
-- **Addressing:** 6-bit IMP number → ~63 IMPs; ~4 hosts per IMP → ~250-host ceiling; the late-1970s
-  **"new leader" / 1822L** logical addressing raised it. *[pin: BBN Report 1822; 1822L /
-  RFC 851/852.]*
-- **Roles:** ARPA/IPTO (funder); **BBN** (built IMPs, ran the NCC); AT&T (leased lines); **SRI-NIC**,
-  host 2 (host table, RFCs, WHOIS); **UCLA** NMC (measurement). *[pin: ARPANET Completion Report.]*
-- **1973 reference map:** ~40 IMPs; first international nodes **NORSAR** (Norway) and **UCL**
-  (London); **RFC 597** (Dec 1973) host list. *[pin: BBN maps; RFC 597.]*
+- **The flag day — end of the NCP era.** The switch from NCP to TCP/IP was set for **1 January
+  1983**. *RFC 801, "NCP/TCP Transition Plan," J. Postel (ISI), November 1981:* "The goal is to make
+  a complete switch over from the NCP to IP/TCP by 1 January 1983."
+  <https://www.rfc-editor.org/rfc/rfc801.txt>
+- **Addressing — the "old leader" ceiling.** The original 1822 short-leader host address used a
+  **6-bit IMP number and a 2-bit host number → 4 hosts per IMP** (hence ~63 IMPs, ~250 hosts). *BBN
+  Report 1822 (Host–IMP Protocol); summarized at the Computer History Wiki, "Host-to-IMP Protocol,"*
+  <https://gunkies.org/wiki/Host-to-IMP_Protocol>
+- **Addressing — the "new leader" escape hatch.** The later **1822L long leader raised these to a
+  16-bit IMP number and 8-bit host number** (thousands of IMPs), still within the NCP era. *RFC 802
+  (1981), RFC 851, RFC 878, "ARPANET 1822L Host Access Protocol."*
+  <https://www.rfc-editor.org/rfc/rfc851.html> · <https://www.rfc-editor.org/rfc/rfc878.html>
+- **1973 reference host list.** **RFC 597, "Host Status," N. Neigus & J. Feinler (NIC), 12 December
+  1973** — ~60+ hosts, and it explicitly lists the international **NORSAR-TIP** (Norway). Produced by
+  the SRI **NIC**, which also shipped the geographic + logical maps. *(UCL London also connected in
+  1973 per site histories; confirm against a primary source before stating as fact.)*
+  <https://www.rfc-editor.org/rfc/rfc597.txt>
+- **Roles.** ARPA/IPTO (funder); **BBN** (built the IMPs, ran the NCC); AT&T (leased lines);
+  **SRI-NIC**, host 2 (host table, RFCs, WHOIS); **UCLA** NMC (measurement). *[pin: ARPANET
+  Completion Report, BBN Report 4799.]*
 - **Line speeds:** 50 kbps standard trunk; 9.6 kbps slow lines; 230.4 kbps later high-speed trunks;
   **SATNET** satellite (~64 kbps, geostationary latency). *[pin: BBN reports; SATNET papers.]*
-- **IMP #1** at UCLA, Sept 2, 1969. *[pin: ARPANET Completion Report / Kleinrock.]*
+- **IMP #1** at UCLA, ~end of August / early September 1969 (first message 29 Oct 1969). *[pin:
+  ARPANET Completion Report / Kleinrock.]*
 - **FEP / front-end** as a period-correct way to put a non-NCP host on the net. *[pin: site
-  histories; the community's IMP/host tooling above.]*
+  histories; the community IMP/host tooling above.]*
 
-> Convention: when a fact graduates from "known" to "pinned," replace its `[pin: …]` note with the
-> primary citation inline.
+> Convention: when a fact graduates from `[pin: …]` to pinned, replace the note with the primary
+> citation inline (as done above for the flag day, addressing, and the 1973 host list).
