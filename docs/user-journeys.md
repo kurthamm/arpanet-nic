@@ -56,7 +56,11 @@ this — it is inherent to the network and works exactly as it did in 1972:
 Listed for completeness only; these are not platform features.
 
 ## D. Change / lifecycle — *(site: NIC)*
-10. **Troubleshoot** — my node is down or won't connect.
+10. **Troubleshoot** — my node is down or won't connect. **Push-button "Diagnose my connection":**
+    because the tunnel, trunk line, and IMP routing all terminate on our side, we read our own view
+    and tell the member which layer is broken (tunnel → line → host-ready → NCP) and how to fix it —
+    they send us nothing. A member-facing slice of the NCC (E.21). See
+    [diagnostics.md](diagnostics.md).
 11. **Move location** — relocate on the map, possibly re-trunk to a nearer hub.
 12. **Swap machine or OS** — update my host-table entry.
 13. **Change line grade.**
@@ -69,7 +73,9 @@ Listed for completeness only; these are not platform features.
 20. **Deregister** — leave for good; free my IMP/host number, drop from the host table and map.
 
 ## E. Observe — *(site: NCC)*
-21. **View network status** — the NCC map: who's up, link health.
+21. **View network status** — the NCC map: who's up, link health. Same data feeds the per-member
+    diagnostics (D.10) and answers "is the node I'm trying to reach up?" — remote IMPs via routing,
+    hosts on our IMPs via host-ready, remote hosts via active probe. See [diagnostics.md](diagnostics.md).
 
 ## F. Operator (you) — *(site: NIC + NCC)*
 22. **Provision requests** — automatic or eyeball-and-approve.

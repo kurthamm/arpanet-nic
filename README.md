@@ -52,6 +52,7 @@ See [`docs/charter.md`](docs/charter.md) for the full statement.
 | [request-flow-and-config.md](docs/request-flow-and-config.md) | End-to-end: request → assignment → generated `wg0.conf` + `attach -u` bundle → bring-up |
 | [transport-and-security.md](docs/transport-and-security.md) | How IMPs actually connect (verified), WireGuard packaging, security |
 | [bootstrap.md](docs/bootstrap.md) | The one-command connector (`arpanet-nic-connect`) — design reference |
+| [diagnostics.md](docs/diagnostics.md) | Push-button "Diagnose my connection" — the layer ladder we read from our side |
 | [telecom.md](docs/telecom.md) | Period line grades (50 kbps &c.), latency, the satellite link |
 | [references.md](docs/references.md) | Primary sources for every historical and technical claim |
 
