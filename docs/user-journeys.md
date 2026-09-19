@@ -26,23 +26,45 @@ So the journeys split into: things the **site** mediates (A, B, D, E, F below) a
    (number, hub, trunk peers) and config bundle.
    *(Open: provisioning is automatic vs. operator-approved — see F.29.)*
 
-## B. Connect — the three tiers of involvement — *(site: NIC + backbone)*
-The member picks **how much they want to run**; we fill in the rest.
+## B. Connect — *(site: NIC + backbone)*
 
-**Tier 1 — I just run a host** (we provide the IMP, and the FEP if the host can't speak NCP):
-4. **Native-NCP host → our IMP** *(case 1a)*.
-5. **Non-NCP host → we host the FEP → our IMP** *(case 1c — FEP-as-a-service, confirmed offered)*.
+**Connection is decided per *host*, not per member.** Every host independently makes three choices,
+and one account can hold **any mix** of hosts wired different ways — there is no rule that a member
+picks one shape.
 
-**Tier 2 — I run my host + its FEP:**
-6. **Non-NCP host → my own FEP → our IMP** *(case 1b)*.
+**The three per-host axes:**
+1. **Which IMP** — one of **our** hub IMPs, or the member's **own local** IMP.
+2. **NCP or FEP** — the host speaks NCP natively, or it needs a FEP (front-end).
+3. **If FEP, whose** — a FEP **we** manage, or the member's **own local** FEP.
 
-**Tier 3 — I run my own IMP:**
-7. **Native-NCP host → my IMP → trunk into the backbone** *(case 2a)*.
-8. **Non-NCP host → my FEP → my IMP → trunk into the backbone** *(case 2b)*.
-9. **Host other members on my IMP** — become a sub-hub *(sub-hub)*.
+A "site" is just a collection of hosts under one account, each at its own point in that space. The
+per-host variants (all valid, all mixable within one account):
+4. **Native host → our hub IMP.**
+5. **Native host → my own IMP** (which trunks to the backbone).
+6. **Non-NCP host → our managed FEP → our hub IMP.**
+7. **Non-NCP host → my own FEP → our hub IMP.**
+8. **Non-NCP host → my own FEP → my own IMP.**
+9. **Host other members on my IMP** — spare host ports carry other members' hosts (I become a
+   sub-hub). Those guest hosts are registered under *their* accounts; the NIC still does the
+   assignment.
 
-> A **multi-host site** (one operator, several hosts) is just Tier 1/2/3 with more than one host —
-> not a separate journey. **Native-NCP vs. FEP** is a property of each host, not a connection type.
+> Example mix (one account): my local IMP carrying my NCP hosts, **plus** one non-NCP host on our
+> managed FEP. Both at once. — A FEP plugs into an IMP's host port, so a FEP sits with the IMP it
+> feeds (our FEP → our hub; your FEP → your IMP or our hub over the tunnel): that's about where the
+> box lives, not a limit on what you can run.
+
+### Onboarding lens (website only, not a constraint)
+A friendly "how much do you want to run?" framing over the axes above:
+*just a host* (we provide the IMP + FEP as needed) · *host + your own FEP* · *your own IMP* (and you
+can host others). Members can mix beyond whatever lens they picked.
+
+### The invariant that makes any mix safe
+No matter how a host is wired, one rule holds and is the single control point:
+> **Every host is registered, and the backbone passes traffic only from a registered `(IMP, host)`
+> pair.** Register → the host reaches the net; unregistered → blocked at the choke point (confined to
+> its own local IMP). Registration is the access grant; revocation removes it. This is why we can
+> allow unlimited combinations and still control every host — including hosts behind a member's own
+> IMP. (Requires inter-node traffic to route through the backbone hubs — see peer-to-peer routing.)
 
 ## C. On the network — *the ARPANET itself, host-to-host, NOT the site*
 Once connected, done entirely from the member's own host over the IMPs. The site provides none of

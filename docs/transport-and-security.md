@@ -70,6 +70,24 @@ live source address** from incoming packets and forwards both directions to the 
 | **A legitimately-joined member misbehaving** (flood, bad routing) | Instant **key revocation** (pull from the hub's allowed list — no IP chase), hub-side rate-limiting, and **NCC monitoring** as the abuse console — exactly what BBN's NCC did. |
 | **Privacy** | The hub sees a member's real IP; other members do not (traffic relays through the hub). Public map location can be approximate. |
 
+## Access control: registration gates the network
+
+Every host must be registered with the NIC — **wherever it sits, including behind a member's own
+IMP.** Registration is not paperwork; it is the **access grant**:
+
+- Inter-node traffic routes **through the backbone hubs** (a deliberate choke point).
+- Each packet carries its source address `(IMP number, host number)`. The backbone passes traffic
+  **only from a registered `(IMP, host)` pair**; anything else is dropped.
+- So an **unregistered host is confined to its own local IMP** — it cannot reach any other host on
+  the network. **Register → access; revoke/deregister → access removed**, instantly.
+
+This holds for *every* connection combination (see the connect axes in
+[user-journeys.md](user-journeys.md)), so unlimited mixing stays fully under central control. We
+cannot *prevent* a member adding a host to their own IMP (their box), but we **see it** (an unknown
+host number appearing at the backbone) and it **cannot traverse the net** until registered. The
+filter lives at our infrastructure edge — invisible to the guest; a registered host's 1822/NCP
+experience is unchanged.
+
 ## What we collect at request time
 
 See [joining.md](joining.md). Notably: contact, approximate location, machine + OS, desired hostname,
