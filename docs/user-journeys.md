@@ -25,8 +25,7 @@ So the journeys split into: things the **site** mediates (A, B, D, E, F below) a
 3. **Request a connection** — submit what I run + location + line grade + a **proposed hostname**;
    receive my assignment (number, hub, trunk peers) and config bundle. **Hostnames:** the member
    proposes, the **NIC approves** for uniqueness + period style (UPPERCASE `SITE-MACHINE`, e.g.
-   `COLUMBIA-ITS`) — duplicates and anachronisms rejected.
-   *(Open: provisioning is automatic vs. operator-approved — see F.29.)*
+   `COLUMBIA-ITS`) — duplicates and anachronisms rejected. Provisioning is **automatic** (see F.22).
 
 ## B. Connect — *(site: NIC + backbone)*
 
@@ -114,13 +113,19 @@ Listed for completeness only; these are not platform features.
     hosts on our IMPs via host-ready, remote hosts via active probe. See [diagnostics.md](diagnostics.md).
 
 ## F. Operator (you) — *(site: NIC + NCC)*
-22. **Provision requests** — automatic or eyeball-and-approve.
+22. **Provision requests** — **fully automatic.** No approval step; a request returns its config
+    immediately. **Instant key-revocation** is the safety valve if someone misbehaves.
 23. **Assign & reclaim numbers; publish the host table.**
 24. **Run & monitor the backbone** — NCC.
-25. **Operate the we-hosted FEPs** — the Tier-1c service.
-26. **Handle a bad actor** — detect → warn → throttle → revoke → appeal.
-27. **Grow the backbone** — add/retire a hub as regions fill.
-28. **Manage the address ceiling** — the eventual new-leader decision.
+25. **Operate the we-hosted FEPs** — the Tier-1c service (one FEP per hosted host number).
+26. **Handle a bad actor** — NCC auto-flags flooding / bad routing → **warn → throttle → revoke
+    key**; the member may **appeal by contacting the operator**.
+27. **Grow the backbone** — add a regional hub when the nearest hub is consistently far (latency) for
+    a cluster of members, or when its host-ports/trunks saturate; retire one only if its region
+    empties.
+28. **Manage the address ceiling** — monitor address-space fill; **reconfigure / expand as we
+    approach** the ~63-IMP / ~250-host limit. The authentic bigger lever (1822L "new leader") stays
+    deferred until we deliberately choose it.
 29. **Back up / restore** the registry and hub state.
 30. **Resolve disputes** — hostname/number conflicts.
 
@@ -130,8 +135,21 @@ Listed for completeness only; these are not platform features.
 - **Visitor with no hardware / public TIP.** To use the network you need a host — the site is not a
   way in. Revisit later if we ever want a hardware-less on-ramp.
 
-## Open decisions surfaced by these journeys
-- **Member identity/accounts** — required? person-auth vs. node-key (A.2).
-- **Provisioning** — automatic vs. operator-approved (A.3 / F.22).
-- **FEP-as-a-service (1c)** — confirmed offered; operational model to define (B.5 / F.25).
-- **Number lifecycle** — offline grace period + reclamation policy (D.17 / D.20 / F.23).
+## Decisions (resolved)
+- **Accounts** — required, via **GitHub OAuth**; public layer = project info + anonymized city/state
+  map; everything actionable is gated. Location granularity = city/state (A.2).
+- **Provisioning** — **fully automatic**; revocation is the safety valve (A.3 / F.22).
+- **Hostnames** — member proposes, NIC approves (uniqueness + period style) (A.3).
+- **Connect model** — per-host axes, free mixing; registration gates the net at the backbone (B).
+- **FEP-as-a-service** — offered; one FEP per hosted host number, many users (B / F.25).
+- **Number lifecycle** — 90-day grace then reclaim; deregister frees immediately; transfer with
+  operator approval (D.17 / D.19 / D.20).
+- **Sub-hub** — operator opts in + capacity; NIC assigns; traffic-crosses-others disclosed in charter.
+- **Abuse** — warn → throttle → revoke, with appeal to the operator (F.26).
+- **Backbone growth** — add a hub on distance/saturation; retire on empty (F.27).
+
+## Still open (implementation-phase)
+- Exact **abuse thresholds** (what counts as flooding / bad routing) (F.26).
+- **Backup/restore** specifics for the registry + hub state (F.29).
+- **Dispute** resolution process specifics (F.30).
+- The **new-leader ceiling decision** — deliberately deferred (F.28).
