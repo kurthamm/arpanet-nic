@@ -20,6 +20,20 @@ anchor regions, so there is always a nearby hub no matter where a member joins.
 
 A US triangle (so no single hub failure partitions the country) plus Europe off the East hub:
 
+```mermaid
+graph LR
+  W["IMP 1 · West<br/>Los Angeles (UCLA)"]
+  C["IMP 2 · Central<br/>Illinois"]
+  E["IMP 3 · East<br/>Cambridge (BBN)"]
+  EU["IMP 4 · Europe<br/>London (UCL)"]
+  W --- C
+  C --- E
+  W --- E
+  E -. "satellite ~560ms" .- EU
+```
+
+(Plain-text fallback:)
+
 ```
         [1] West ────────── [3] East ──~~ atlantic ~~── [4] Europe
         (LA)   \            (Cambridge)                    (London)

@@ -44,12 +44,22 @@ yet tied to a primary source and should be treated as provisional.
   1973 per site histories; confirm against a primary source before stating as fact.)*
   <https://www.rfc-editor.org/rfc/rfc597.txt>
 - **Roles.** ARPA/IPTO (funder); **BBN** (built the IMPs, ran the NCC); AT&T (leased lines);
-  **SRI-NIC**, host 2 (host table, RFCs, WHOIS); **UCLA** NMC (measurement). *[pin: ARPANET
-  Completion Report, BBN Report 4799.]*
-- **Line speeds:** 50 kbps standard trunk; 9.6 kbps slow lines; 230.4 kbps later high-speed trunks;
-  **SATNET** satellite (~64 kbps, geostationary latency). *[pin: BBN reports; SATNET papers.]*
-- **IMP #1** at UCLA, ~end of August / early September 1969 (first message 29 Oct 1969). *[pin:
-  ARPANET Completion Report / Kleinrock.]*
+  **SRI-NIC**, host 2 (host table, RFCs, WHOIS — the NIC authored RFC 597 and shipped the network
+  maps); **UCLA** Network Measurement Center (Kleinrock's group — performance measurement).
+  *A History of the ARPANET: The First Decade,* BBN Report No. 4799, April 1981 (the ARPANET
+  Completion Report). <https://walden-family.com/bbn/arpanet-completion-report.pdf> (also DTIC
+  ADA115440). UCLA NMC:
+  <https://historyofcomputercommunications.info/section/6.7/Network-Measurement-Center-1969-1970/>
+- **Line speeds.** Backbone trunks were **50 kbps leased telephone lines** (Bell 201/301 modems);
+  the first ARPANET message (UCLA→SRI, 29 Oct 1969) ran over a 50 kbps line. Slower tails existed
+  (~9.6 kbps); later high-speed trunks reached 230.4 kbps *[pin: BBN reports]*. The transatlantic
+  satellite grade is modeled on **SATNET** (Atlantic Packet Satellite Network, built by BBN under
+  ARPA) — geostationary, so ~0.25 s one-way latency; exact bit rate approximate.
+  <https://en.wikipedia.org/wiki/SATNET>
+- **IMP #1** was delivered to Kleinrock's group at **UCLA on 30 August 1969**; the first message
+  ("LO" — LOGIN crashed after L and O), sent by Charley Kline from UCLA to SRI, was **29 October
+  1969**. *ICANN / UCLA Samueli / BBN Completion Report.*
+  <https://www.icann.org/en/blogs/details/the-first-message-transmission-29-10-2019-en>
 - **FEP / front-end** as a period-correct way to put a non-NCP host on the net. *[pin: site
   histories; the community IMP/host tooling above.]*
 
